@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool gameOver;
     public float speed = 9.5f;
     private Rigidbody playerRb;
     public float turnSpeed;
@@ -25,4 +26,13 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
 
     }
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Money"))
+        {
+            Destroy(other.gameObject);
+        }
+    
+
+}
 }
